@@ -1,5 +1,6 @@
 var square=document.querySelectorAll(".square");
 var displayColor = document.querySelector(".displayColor");
+var message = document.querySelector("#message");
 //console.log(square);
 
 
@@ -18,10 +19,22 @@ displayColor.textContent = pickedColor;
 for(var i=0; i < square.length; i++)
 {
     // console.log(square[i]);
-    console.log(i);
+    // console.log(i);
     square[i].style.backgroundColor = colors[i];
     square[i].addEventListener("click", function()
 {
 //     alert("you clicked inside the box.")
+
+        var choosenColor = this.style.backgroundColor;
+        // compare with picked color
+        if(choosenColor === pickedColor)
+        {
+            message.textContent = "correct";
+            // alert("You are right");
+        }
+        else{
+            message.textContent = "Try again";
+            // alert("You are wrong");
+        }
 })
 }
