@@ -35,6 +35,7 @@ for(var i=0; i < square.length; i++)
             // alert("You are right");
         }
         else{
+            this.style.backgroundColor = "#232323";
             message.textContent = "Try again";
             // alert("You are wrong");
         }
