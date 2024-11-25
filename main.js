@@ -1,6 +1,7 @@
 var square=document.querySelectorAll(".square");
 var displayColor = document.querySelector(".displayColor");
 var message = document.querySelector("#message");
+var h1 = document.querySelector("h1");
 //console.log(square);
 
 
@@ -14,7 +15,7 @@ var colors =[
 
 ];
 
-var pickedColor = colors[2];
+var pickedColor = colors[4];
 displayColor.textContent = pickedColor;
 for(var i=0; i < square.length; i++)
 {
@@ -29,6 +30,7 @@ for(var i=0; i < square.length; i++)
         // compare with picked color
         if(choosenColor === pickedColor)
         {
+            h1.style.backgroundColor = pickedColor;
             message.textContent = "correct";
             // alert("You are right");
         }
