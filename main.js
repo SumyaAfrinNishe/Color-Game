@@ -4,16 +4,18 @@ var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 //console.log(square);
 
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 255, 0)",
-  "rgb(255, 255, 255)",
-  "rgb(0, 255, 0)",
-  "rgb(255, 0, 255)",
-  "rgb(0, 0, 255)",
-];
+var colors = generateRandomColor(6);
+//   [
+//   "rgb(255, 0, 0)",
+//   "rgb(255, 255, 0)",
+//   "rgb(255, 255, 255)",
+//   "rgb(0, 255, 0)",
+//   "rgb(255, 0, 255)",
+//   "rgb(0, 0, 255)",
+// ];
 
 var pickedColor = pickedRandomColor(colors); //index 1-5
+// also I can write this way like, >> var pickedColor = colors[pickedRandomColor()];
 displayColor.textContent = pickedColor;
 for (var i = 0; i < square.length; i++) {
   // console.log(square[i]);
@@ -22,9 +24,10 @@ for (var i = 0; i < square.length; i++) {
   square[i].addEventListener("click", function () {
     //     alert("you clicked inside the box.")
 
-    var choosenColor = this.style.backgroundColor;
+    var chosenColor = this.style.backgroundColor;
+    console.log(chosenColor, pickedColor);
     // compare with picked color
-    if (choosenColor === pickedColor) {
+    if (chosenColor === pickedColor) {
       h1.style.backgroundColor = pickedColor;
       message.textContent = "correct";
       // square[i].style.backgroundColor = pickedColor; ei line rakhle sob square right answer er dara effect felchilo na
@@ -49,3 +52,30 @@ function pickedRandomColor(colors) {
   var randomNumber = Math.floor(Math.random() * colors.length);
   return colors[randomNumber];
 }
+
+//generate random color
+function generateRandomColor(number) {
+  //create colors array
+  var colors = [];
+  for (var i = 0; i < number; i++){
+    randomColor()
+    colors.push(randomColor());
+  }
+  return colors;
+}
+
+function randomColor() {
+     //generate color "rgb(255,0,0)"
+
+    //red 0-255
+    //green 0-255
+    //blue 0-255
+
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    return "rgb" + "(" + r + "," + g + "," + b + ")";
+      
+}
+ 
+  
