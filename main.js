@@ -21,7 +21,7 @@ displayColor.textContent = pickedColor;
 
 reset.addEventListener("click", function () {
   // alert("You clicked reset button");
-
+  message.textContent = "";
   //generate new colors
   colors = generateRandomColor(6);
 
@@ -47,6 +47,7 @@ for (var i = 0; i < square.length; i++) {
     // console.log(chosenColor, pickedColor);
     // compare with picked color
     if (chosenColor === pickedColor) {
+      reset.textContent = "Play Again";
       h1.style.backgroundColor = pickedColor;
       message.textContent = "correct";
       // square[i].style.backgroundColor = pickedColor; ei line rakhle sob square right answer er dara effect felchilo na
