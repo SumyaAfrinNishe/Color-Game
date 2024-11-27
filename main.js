@@ -3,6 +3,8 @@ var displayColor = document.querySelector(".displayColor");
 var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var reset = document.querySelector("#reset");
+var easyBtn = document.querySelector("#easy");
+var hardBtn = document.querySelector("#hard");
 //console.log(square);
 
 var colors = generateRandomColor(6);
@@ -19,9 +21,52 @@ var pickedColor = pickedRandomColor(colors); //index 1-5
 // also I can write this way like, >> var pickedColor = colors[pickedRandomColor()];
 displayColor.textContent = pickedColor;
 
+easyBtn.addEventListener("click", function (){
+  this.classList.add("selected");
+  hardBtn.classList.remove("selected");
+
+  //generate new colors
+  colors = generateRandomColor(3);
+
+  pickedColor = pickedRandomColor(colors);
+
+  displayColor.textContent = pickedColor;
+
+  for (var i = 0; i < square.length; i++) {
+    if (colors[i]) {
+      square[i].style.backgroundColor = colors[i];
+    } else {
+      square[i].style.display = "none";
+    }
+  }
+});
+
+hardBtn.addEventListener("click", function (){
+  this.classList.add("selected");
+  easyBtn.classList.remove("selected");
+
+
+  
+  //generate new colors
+  colors = generateRandomColor(3);
+
+  pickedColor = pickedRandomColor(colors);
+
+  displayColor.textContent = pickedColor;
+
+  for (var i = 0; i < square.length; i++) {
+      square[i].style.backgroundColor = colors[i];
+      square[i].style.display = "block";
+  }
+});
+
+
 reset.addEventListener("click", function () {
   // alert("You clicked reset button");
+  //change message to no nothing
   message.textContent = "";
+
+  //change reset button text
   this.textContent = "New Colors";
   //generate new colors
   colors = generateRandomColor(6);
@@ -37,6 +82,9 @@ reset.addEventListener("click", function () {
     square[i].style.backgroundColor = colors[i];
   }
 });
+
+
+
 for (var i = 0; i < square.length; i++) {
   // console.log(square[i]);
   // console.log(i);
