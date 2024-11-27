@@ -22,6 +22,7 @@ displayColor.textContent = pickedColor;
 reset.addEventListener("click", function () {
   // alert("You clicked reset button");
   message.textContent = "";
+  this.textContent = "New Colors";
   //generate new colors
   colors = generateRandomColor(6);
 
