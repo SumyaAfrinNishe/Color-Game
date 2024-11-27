@@ -2,6 +2,7 @@ var square = document.querySelectorAll(".square");
 var displayColor = document.querySelector(".displayColor");
 var message = document.querySelector("#message");
 var h1 = document.querySelector("h1");
+var reset = document.querySelector("#reset");
 //console.log(square);
 
 var colors = generateRandomColor(6);
@@ -17,6 +18,24 @@ var colors = generateRandomColor(6);
 var pickedColor = pickedRandomColor(colors); //index 1-5
 // also I can write this way like, >> var pickedColor = colors[pickedRandomColor()];
 displayColor.textContent = pickedColor;
+
+reset.addEventListener("click", function () {
+  // alert("You clicked reset button");
+
+  //generate new colors
+  colors = generateRandomColor(6);
+
+
+  //pick a color
+  pickedColor = pickedRandomColor(colors); //index 1-5
+  //show this color in display color
+  displayColor.textContent = pickedColor;
+    //display the generated color
+  for (var i = 0; i < square.length; i++)
+  {
+    square[i].style.backgroundColor = colors[i];
+  }
+});
 for (var i = 0; i < square.length; i++) {
   // console.log(square[i]);
   // console.log(i);
@@ -25,7 +44,7 @@ for (var i = 0; i < square.length; i++) {
     //     alert("you clicked inside the box.")
 
     var chosenColor = this.style.backgroundColor;
-    console.log(chosenColor, pickedColor);
+    // console.log(chosenColor, pickedColor);
     // compare with picked color
     if (chosenColor === pickedColor) {
       h1.style.backgroundColor = pickedColor;
