@@ -46,7 +46,7 @@ for (var i = 0; i < modeBtn.length; i++) {
     pickedColor = pickedRandomColor(colors);
     //show this in displaycolor
     displayColor.textContent = pickedColor;
-    reset.textContent = "New Colors";
+    resetBtn();
     message.textContent = "";
     for (var i = 0; i < square.length; i++) {
       if (colors[i]) {
@@ -67,7 +67,12 @@ reset.addEventListener("click", function () {
   message.textContent = "";
   //change reset button text
   this.textContent = "New Colors";
+  //show color in square
+  for (var i = 0; i < square.length; i++){
+    square[i].style.backgroundColor = colors[i];
+  }
   resetBtn();
+  h1.style.background = "steelblue";
 });
 
 function resetBtn(){
