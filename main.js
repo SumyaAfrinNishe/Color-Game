@@ -61,6 +61,28 @@ for (var i = 0; i < modeBtn.length; i++) {
   });
 }
   
+reset.addEventListener("click", function () {
+  // alert("You clicked reset button");
+  //change message to no nothing
+  message.textContent = "";
+  //change reset button text
+  this.textContent = "New Colors";
+  resetBtn();
+});
+
+function resetBtn(){
+  //generate new colors
+  colors = generateRandomColor(numSquares);
+  //pick a color
+  pickedColor = pickedRandomColor(colors); //index 1-5
+  //show this color in display color
+  displayColor.textContent = pickedColor;
+    //display the generated color
+  for (var i = 0; i < square.length; i++)
+  {
+    square[i].style.backgroundColor = colors[i];
+  }
+}
   // hardBtn.addEventListener("click", function (){
   //   this.classList.add("selected");
   //   easyBtn.classList.remove("selected");
@@ -85,28 +107,6 @@ for (var i = 0; i < modeBtn.length; i++) {
   // });
   
   
-  reset.addEventListener("click", function () {
-    // alert("You clicked reset button");
-    //change message to no nothing
-    message.textContent = "";
-    //change reset button text
-    this.textContent = "New Colors";
-    reset();
-  });
-
-function reset() {
-    //generate new colors
-    colors = generateRandomColor(numSquares);
-    //pick a color
-    pickedColor = pickedRandomColor(colors); //index 1-5
-    //show this color in display color
-    displayColor.textContent = pickedColor;
-      //display the generated color
-    for (var i = 0; i < square.length; i++)
-    {
-      square[i].style.backgroundColor = colors[i];
-    }
-  }
 
 // easyBtn.addEventListener("click", function (){
 //   this.classList.add("selected");
