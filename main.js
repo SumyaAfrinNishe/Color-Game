@@ -22,44 +22,79 @@ var colors = generateRandomColor(numSquares);
 var pickedColor = pickedRandomColor(colors); //index 1-5
 // also I can write this way like, >> var pickedColor = colors[pickedRandomColor()];
 displayColor.textContent = pickedColor;
+function init() {
 
-
-//Add event listener to mode button
-for (var i = 0; i < modeBtn.length; i++) {
-  modeBtn[i].addEventListener("click", function () {
-    // this.classList.toggle("selected");
-    easyBtn.classList.remove("selected");
-    hardBtn.classList.remove("selected");
-    this.classList.add("selected");
-    //checking the button which one is clicked
-    // if (this.textContent = "Easy") {
-    //   numSquares = 3;
-    // } else {
-    //   numSquares = 6;
-    // }
-    console.log(this.textContent);
-    numSquares = (this.textContent === "Easy") ? 3 : 6;  //ternary operator style
-    //generate new colors
-    colors = generateRandomColor(numSquares);
   
-    //pick a color 
-    pickedColor = pickedRandomColor(colors);
-    //show this in displaycolor
-    displayColor.textContent = pickedColor;
-    resetBtn();
-    message.textContent = "";
-    for (var i = 0; i < square.length; i++) {
-      if (colors[i]) {
-        square[i].style.display = "block";
-        square[i].style.backgroumdColor = colors[i];
+  for (var i = 0; i < square.length; i++) {
+    // console.log(square[i]);
+    // console.log(i);
+    square[i].style.backgroundColor = colors[i];
+    square[i].addEventListener("click", function () {
+      //     alert("you clicked inside the box.")
+  
+      var chosenColor = this.style.backgroundColor;
+      // console.log(chosenColor, pickedColor);
+      // compare with picked color
+      if (chosenColor === pickedColor) {
+        reset.textContent = "Play Again";
+        h1.style.backgroundColor = pickedColor;
+        message.textContent = "correct";
+        // square[i].style.backgroundColor = pickedColor; ei line rakhle sob square right answer er dara effect felchilo na
+        matchColor(pickedColor);
+        // console.log(square[i]);
+        // alert("You are right");
+      } else {
+        this.style.backgroundColor = "#232323";
+        message.textContent = "Try again";
+        // alert("You are wrong");
       }
-      else {
-        square[i].style.display = "none";
+    });
+  }
+  resetBtn();
+  //Add event listener to mode button
+  for (var i = 0; i < modeBtn.length; i++) {
+    modeBtn[i].addEventListener("click", function () {
+      // this.classList.toggle("selected");
+      easyBtn.classList.remove("selected");
+      hardBtn.classList.remove("selected");
+      this.classList.add("selected");
+      //checking the button which one is clicked
+      // if (this.textContent = "Easy") {
+      //   numSquares = 3;
+      // } else {
+      //   numSquares = 6;
+      // }
+      console.log(this.textContent);
+      numSquares = (this.textContent === "Easy") ? 3 : 6;  //ternary operator style
+      //generate new colors
+      colors = generateRandomColor(numSquares);
+    
+      //pick a color 
+      pickedColor = pickedRandomColor(colors);
+      //show this in displaycolor
+      displayColor.textContent = pickedColor;
+      resetBtn();
+      message.textContent = "";
+      //generate new colors
+      for (var i = 0; i < square.length; i++) {
+        if (colors[i]) {
+          square[i].style.display = "block";
+          square[i].style.backgroumdColor = colors[i];
+        }
+        else {
+          square[i].style.display = "none";
+        }
       }
-    }
-    h1.style.background = "steelblue";
-  });
+      h1.style.background = "steelblue";
+    });
+  }
+  
 }
+init();
+  
+
+
+
   
 reset.addEventListener("click", function () {
   // alert("You clicked reset button");
@@ -88,6 +123,9 @@ function resetBtn(){
     square[i].style.backgroundColor = colors[i];
   }
 }
+
+
+
   // hardBtn.addEventListener("click", function (){
   //   this.classList.add("selected");
   //   easyBtn.classList.remove("selected");
@@ -178,31 +216,7 @@ function resetBtn(){
 
 
 
-for (var i = 0; i < square.length; i++) {
-  // console.log(square[i]);
-  // console.log(i);
-  square[i].style.backgroundColor = colors[i];
-  square[i].addEventListener("click", function () {
-    //     alert("you clicked inside the box.")
 
-    var chosenColor = this.style.backgroundColor;
-    // console.log(chosenColor, pickedColor);
-    // compare with picked color
-    if (chosenColor === pickedColor) {
-      reset.textContent = "Play Again";
-      h1.style.backgroundColor = pickedColor;
-      message.textContent = "correct";
-      // square[i].style.backgroundColor = pickedColor; ei line rakhle sob square right answer er dara effect felchilo na
-      matchColor(pickedColor);
-      // console.log(square[i]);
-      // alert("You are right");
-    } else {
-      this.style.backgroundColor = "#232323";
-      message.textContent = "Try again";
-      // alert("You are wrong");
-    }
-  });
-}
 
 function matchColor(color) {
   for (var i = 0; i < square.length; i++) {
